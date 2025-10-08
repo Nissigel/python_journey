@@ -1,4 +1,7 @@
-from termcolor import cprint
+from termcolor import cprint, colored 
+
+X = 'X'
+O = 'O'
 
 board = [
     ['', '', ''],
@@ -6,11 +9,15 @@ board = [
     ['', '', ''],
 ]
 
+def cell(mark):
+    color = 'cyan' if mark == X else 'yellow'
+    return colored(mark, color)
+
 def print_board(board):
     line = '-----+-----+-----'
     print(line)
     for row in board:
-        print(f'  {row[0]}   |   {row[1]}  | {row[2]} ')
+        print(f'  {cell(row[0])}   |   {cell(row[1])}  | {cell(row[2])} ')
         print(line)
 
 def check_winner(board):
@@ -62,7 +69,7 @@ def get_move(current_player):
 
 def main():
 
-    current_player = 'X'
+    current_player = X
 
     print_board(board,)
     print()
@@ -83,7 +90,7 @@ def main():
             print ()
             break
 
-        current_player = 'O' if current_player == 'X' else 'X'
+        current_player = O if current_player == X else X
 
 if __name__ == '__main__':
     main()
